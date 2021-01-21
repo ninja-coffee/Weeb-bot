@@ -9,6 +9,8 @@ const {
 
 const fs = require('fs');
 
+global.buzzed = false;
+
 client.commands = new Discord.Collection();
 
 client.categories = fs.readdirSync("./commands/");
@@ -59,7 +61,7 @@ client.on('message', async message => {
         let command = client.commands.get(cmd);
 
         if (command) {
-            command.run(client, message, args);
+            command.run(client, message, args, );
         }
     } catch (error) {
         console.log("That command is not recognised")
